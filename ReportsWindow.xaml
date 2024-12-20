@@ -1,0 +1,14 @@
+﻿<Window x:Class="InventoryManagementSystem.ReportsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Reports &amp; Analytics" Height="450" Width="800"
+        Background="#f9f9f9">
+    <Grid>
+        <TextBlock Text="Reports and Analytics Module" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Foreground="#333"/>
+    </Grid>
+</Window>

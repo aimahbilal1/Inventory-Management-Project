@@ -1,0 +1,119 @@
+﻿<Window x:Class="InventoryManagement.PurchaseOrderManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:fa="http://schemas.fontawesome.com/icons"
+        Title="Purchase Order Management" Height="534" Width="450" Background="White">
+
+    <!-- Window Resources for Title Style -->
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="WindowTitleStyle">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#0288D1"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Margin" Value="0,20,0,10"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="LabelStyle">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#0288D1"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="5,10,0,5"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+
+        <Style TargetType="ComboBox" x:Key="ComboBoxStyle">
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Background" Value="#E1F5FE"/>
+            <Setter Property="BorderBrush" Value="#0288D1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="TextBoxStyle">
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Background" Value="#E1F5FE"/>
+            <Setter Property="BorderBrush" Value="#0288D1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="ButtonStyle">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Background" Value="#0288D1"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#0288D1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#03A9F4"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <!-- Main Layout -->
+    <Grid Margin="20">
+        <!-- Title Text -->
+        <TextBlock Text="Purchase Order Management" Style="{StaticResource WindowTitleStyle}" />
+
+        <!-- Form Layout -->
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,57,0,0" Height="418">
+            <!-- Supplier ComboBox and Label -->
+            <TextBlock Text="Select Supplier" Style="{StaticResource LabelStyle}"/>
+            <ComboBox Name="supplierComboBox" Style="{StaticResource ComboBoxStyle}">
+                <ComboBoxItem Content="Supplier 1" />
+                <ComboBoxItem Content="Supplier 2" />
+                <ComboBoxItem Content="Supplier 3" />
+            </ComboBox>
+
+            <!-- Order Status ComboBox and Label -->
+            <TextBlock Text="Select Order Status" Style="{StaticResource LabelStyle}"/>
+            <ComboBox Name="orderStatusComboBox" Style="{StaticResource ComboBoxStyle}">
+                <ComboBoxItem Content="Pending" />
+                <ComboBoxItem Content="Shipped" />
+                <ComboBoxItem Content="Delivered" />
+            </ComboBox>
+
+            <!-- Order ID TextBox and Label -->
+            <TextBlock Text="Enter Order ID" Style="{StaticResource LabelStyle}"/>
+            <TextBox Name="orderIDTextBox" Style="{StaticResource TextBoxStyle}"/>
+            <Button Name="BackButton" Height="40" Width="118" 
+        HorizontalAlignment="Left" 
+        Margin="10" Click="BackButton_Click" Background="#2874A6" BorderBrush="#1B4F72" BorderThickness="1" RenderTransformOrigin="1.383,0.425">
+                <!-- Back Arrow Icon -->
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Path Data="M 10,0 L 0,10 L 10,20" Stroke="DarkBlue" StrokeThickness="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="Back" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Foreground="DarkBlue"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+
+
+            <!-- Buttons -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+                <Button Name="createOrderButton" Content="Create Order" Style="{StaticResource ButtonStyle}" Click="CreateOrderButton_Click" Width="96"/>
+                <Button Name="trackOrderButton" Content="Track Order" Style="{StaticResource ButtonStyle}" Click="TrackOrderButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

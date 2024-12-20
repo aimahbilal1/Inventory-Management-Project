@@ -1,0 +1,133 @@
+﻿<Window x:Class="InventoryManagementSystem.ProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Product Management" Height="600" Width="800"
+        Background="#f0f0f0">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Back Button -->
+        <Button Name="BackButton" Height="40" Width="120" 
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Margin="10" Click="BackButton_Click" 
+                Background="#2874A6" BorderBrush="#1B4F72" Foreground="White" 
+                FontWeight="Bold" BorderThickness="1">
+            <StackPanel Orientation="Horizontal">
+                <!-- Arrow Icon -->
+                <Polygon Points="10,20 30,10 30,30"
+                         Fill="White" HorizontalAlignment="Center"
+                         Margin="0,0,5,0"/>
+                <TextBlock Text="Back" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <!-- Title -->
+        <TextBlock Text="Product Management" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#333" Margin="0,0,0,20" Grid.Row="0"/>
+
+        <!-- Product Name -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Product Name:" VerticalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="ProductNameTextBox" Grid.Column="1" Margin="5" />
+        </Grid>
+
+        <!-- SKU -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="SKU:" VerticalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="SKUTextBox" Grid.Column="1" Margin="5"/>
+        </Grid>
+
+        <!-- Category -->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Category:" VerticalAlignment="Center" Margin="5"/>
+            <ComboBox x:Name="CategoryComboBox" Grid.Column="1" Margin="5" Height="30"/>
+        </Grid>
+
+        <!-- Quantity -->
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Quantity:" VerticalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="QuantityTextBox" Grid.Column="1" Margin="5"/>
+        </Grid>
+
+        <!-- Unit Price -->
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Unit Price:" VerticalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="UnitPriceTextBox" Grid.Column="1" Margin="5"/>
+        </Grid>
+
+        <!-- Barcode -->
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Barcode:" VerticalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="BarcodeTextBox" Grid.Column="1" Margin="5"/>
+        </Grid>
+
+        <!-- Search Product -->
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Search by Name/SKU:" VerticalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="SearchTextBox" Grid.Column="1" Margin="5" KeyUp="SearchTextBox_KeyUp"/>
+        </Grid>
+
+        <!-- Action Buttons -->
+        <StackPanel Orientation="Horizontal" Grid.Row="8" HorizontalAlignment="Center" Margin="0,20,0,10">
+            <Button Content="Add Product" Width="120" Height="40" Click="AddProductButton_Click" Margin="5" Background="#0078d4" Foreground="White"/>
+            <Button Content="Update Product" Width="120" Height="40" Click="UpdateProductButton_Click" Margin="5" Background="#0078d4" Foreground="White"/>
+            <Button Content="Remove Product" Width="120" Height="40" Click="RemoveProductButton_Click" Margin="5" Background="#d9534f" Foreground="White"/>
+        </StackPanel>
+
+        <!-- Product List View -->
+        <ListView x:Name="ProductListView" Grid.Row="9" Margin="10" Height="200" SelectionMode="Single">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ProductID}" />
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="SKU" DisplayMemberBinding="{Binding SKU}" />
+                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding CategoryID}" />
+                    <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding Quantity}" />
+                    <GridViewColumn Header="Unit Price" DisplayMemberBinding="{Binding UnitPrice}" />
+                    <GridViewColumn Header="Barcode" DisplayMemberBinding="{Binding Barcode}" />
+                    <GridViewColumn Header="Created At" DisplayMemberBinding="{Binding CreatedAt}" />
+                    <GridViewColumn Header="Updated At" DisplayMemberBinding="{Binding UpdatedAt}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
